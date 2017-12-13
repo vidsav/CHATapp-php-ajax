@@ -17,11 +17,18 @@
     <br>
     <div id="container">
         <div id="chat_box">
+            <?php
+                $query = "SELECT * FROM chat ORDER BY id ASC";
+                $run = $con->query($query);
+            
+                while($row = $run->fetch_array()) :
+            ?>
             <div id="chat_data">
-                <span style="color:#007bff;">Wali: </span>
-                <span>How are you ?</span>
-                <small style="float:right">12:30 PM</small>
+                <span style="color:#007bff;"><?php echo $row['name']; ?>:</span>
+                <span><?php echo $row['msg']; ?></span>
+                <small style="float:right"><?php echo $row['date']; ?></small>
             </div>
+            <?php endwhile; ?>
         </div>
         <form method="post"; action="">
             <div class="form-group">
