@@ -8,6 +8,11 @@ body{
     background: #BFBFBF;
 }
 
+h1{
+    text-align: center;
+    color:#fff;
+}
+
 #container{
     width: 40%;
     background: white;
@@ -23,12 +28,10 @@ body{
 
 #chat_data{
     width: 100%;
-    height: auto;
     padding: 5px;
     margin-bottom: 5px;
     border-bottom: 1px solid silver;
     font-weight: bold;
-    background-color: blue;
     
 }
 

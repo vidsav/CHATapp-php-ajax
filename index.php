@@ -14,6 +14,7 @@
 </head>
 
 <body>
+    <h1>CHAT</h1>
     <br>
     <div id="container">
         <div id="chat_box">
@@ -26,7 +27,7 @@
             <div id="chat_data">
                 <span style="color:#007bff;"><?php echo $row['name']; ?>:</span>
                 <span><?php echo $row['msg']; ?></span>
-                <small style="float:right"><?php echo $row['date']; ?></small>
+                <small style="float:right"><?php echo formatDate($row['date']); ?></small>
             </div>
             <?php endwhile; ?>
         </div>
@@ -35,10 +36,22 @@
     <input type="text" class="form-control" name="name" placeholder="Name">
   </div>
             <div class="form-group">
-            <textarea class="form-control" name="enter message" placeholder="enter message"></textarea>
+            <textarea class="form-control" name="msg" placeholder="enter message"></textarea>
             </div>
             <input class="btn btn-primary" type="submit" name="submit" value="Send">
         </form>
+        <?php
+        if(isset($_POST['submit'])){
+            $name = $_POST['name'];
+            $msg = $_POST['msg'];
+            $query = "INSERT INTO chat (name,msg) values ('$name','$msg')";
+            $run = $con->query($query);
+            
+            if($run){
+                echo "<embed loop='false' src='chat.wav' hidden='true' autoplay='true' />";
+            }
+        }
+        ?>
     </div>
 </body>
 
